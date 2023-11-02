@@ -1,2 +1,2 @@
 # cputil
-The sepcial cloud platform util package
+The sepcial cloud platform util package.

@@ -37,7 +37,7 @@ type (
 )
 
 func (r *RealDataReq) Url() string                 { return "/v1/clouds/real_data" }
-func (r *RealDataReq) Method() string              { return http.MethodGet }
+func (r *RealDataReq) Method() string              { return http.MethodPost }
 func (r *RealDataReq) Header() http.Header         { return nil }
 func (r *RealDataReq) Values() (values url.Values) { return }
 func (r *RealDataReq) Form() (form url.Values)     { return }

@@ -25,10 +25,10 @@ type (
 	FlowDataReq struct {
 		ID uint // 实例ID
 
-		Type    string `url:"type,omitempty"`       // 1按小时,2按天,3按月,其他默认根据时间范围自动判断
-		Cloud   string `url:"start_time,omitempty"` // 开始毫秒时间戳
-		EndTime string `url:"end_time,omitempty"`   // 结束毫秒时间戳(默认现在)
-		Unit    string `url:"unit,omitempty"`       // 转换到单位(KB,MB,GB,TB)
+		Type      string `url:"type,omitempty"`       // 1按小时,2按天,3按月,其他默认根据时间范围自动判断
+		StartTime string `url:"start_time,omitempty"` // 开始毫秒时间戳
+		EndTime   string `url:"end_time,omitempty"`   // 结束毫秒时间戳(默认现在)
+		Unit      string `url:"unit,omitempty"`       // 转换到单位(KB,MB,GB,TB)
 	}
 	FlowDataResp struct {
 		Data []struct {

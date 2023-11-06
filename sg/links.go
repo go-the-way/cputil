@@ -36,8 +36,8 @@ func (r *LinksReq) Form() (form url.Values)     { return }
 func (r *LinksReq) Body() any                   { return r }
 
 // Links 关联安全组
-func Links(ctx *cloudplatform.Context, req *LinksReq) (*LinksResp, error) {
-	if resp, err := cloudplatform.Execute[*LinksReq, *LinksResp](ctx, req); err != nil {
+func Links(ctx *cputil.Context, req *LinksReq) (*LinksResp, error) {
+	if resp, err := cputil.Execute[*LinksReq, *LinksResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

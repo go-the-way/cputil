@@ -36,8 +36,8 @@ func (r *HardOffReq) Form() (form url.Values)     { return }
 func (r *HardOffReq) Body() any                   { return nil }
 
 // HardOff 硬关机
-func HardOff(ctx *cloudplatform.Context, req *HardOffReq) (*HardOffResp, error) {
-	if resp, err := cloudplatform.Execute[*HardOffReq, *HardOffResp](ctx, req); err != nil {
+func HardOff(ctx *cputil.Context, req *HardOffReq) (*HardOffResp, error) {
+	if resp, err := cputil.Execute[*HardOffReq, *HardOffResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

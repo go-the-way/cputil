@@ -36,8 +36,8 @@ func (r *RebootReq) Form() (form url.Values)     { return }
 func (r *RebootReq) Body() any                   { return nil }
 
 // Reboot 重启
-func Reboot(ctx *cloudplatform.Context, req *RebootReq) (*RebootResp, error) {
-	if resp, err := cloudplatform.Execute[*RebootReq, *RebootResp](ctx, req); err != nil {
+func Reboot(ctx *cputil.Context, req *RebootReq) (*RebootResp, error) {
+	if resp, err := cputil.Execute[*RebootReq, *RebootResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

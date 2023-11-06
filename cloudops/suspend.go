@@ -35,8 +35,8 @@ func (r *SuspendReq) Form() (form url.Values)     { return }
 func (r *SuspendReq) Body() any                   { return r }
 
 // Suspend 暂停
-func Suspend(ctx *cloudplatform.Context, req *SuspendReq) (*SuspendResp, error) {
-	if resp, err := cloudplatform.Execute[*SuspendReq, *SuspendResp](ctx, req); err != nil {
+func Suspend(ctx *cputil.Context, req *SuspendReq) (*SuspendResp, error) {
+	if resp, err := cputil.Execute[*SuspendReq, *SuspendResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

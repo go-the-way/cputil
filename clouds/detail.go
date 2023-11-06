@@ -213,8 +213,8 @@ func (r *DetailReq) Form() (form url.Values)     { return }
 func (r *DetailReq) Body() any                   { return nil }
 
 // Detail 实例列表
-func Detail(ctx *cloudplatform.Context, req *DetailReq) (*DetailResp, error) {
-	if resp, err := cloudplatform.Execute[*DetailReq, *DetailResp](ctx, req); err != nil {
+func Detail(ctx *cputil.Context, req *DetailReq) (*DetailResp, error) {
+	if resp, err := cputil.Execute[*DetailReq, *DetailResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

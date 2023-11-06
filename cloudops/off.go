@@ -36,8 +36,8 @@ func (r *OffReq) Form() (form url.Values)     { return }
 func (r *OffReq) Body() any                   { return nil }
 
 // Off 关机
-func Off(ctx *cloudplatform.Context, req *OffReq) (*OffResp, error) {
-	if resp, err := cloudplatform.Execute[*OffReq, *OffResp](ctx, req); err != nil {
+func Off(ctx *cputil.Context, req *OffReq) (*OffResp, error) {
+	if resp, err := cputil.Execute[*OffReq, *OffResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

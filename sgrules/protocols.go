@@ -38,8 +38,8 @@ func (r *ProtocolsReq) Form() (form url.Values)     { return }
 func (r *ProtocolsReq) Body() any                   { return nil }
 
 // Protocols 获取规则可用协议
-func Protocols(ctx *cloudplatform.Context, req *ProtocolsReq) ([]*ProtocolsResp, error) {
-	if resp, err := cloudplatform.Execute[*ProtocolsReq, []*ProtocolsResp](ctx, req); err != nil {
+func Protocols(ctx *cputil.Context, req *ProtocolsReq) ([]*ProtocolsResp, error) {
+	if resp, err := cputil.Execute[*ProtocolsReq, []*ProtocolsResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

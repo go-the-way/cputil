@@ -36,8 +36,8 @@ func (r *OnReq) Form() (form url.Values)     { return }
 func (r *OnReq) Body() any                   { return nil }
 
 // On 开机
-func On(ctx *cloudplatform.Context, req *OnReq) (*OnResp, error) {
-	if resp, err := cloudplatform.Execute[*OnReq, *OnResp](ctx, req); err != nil {
+func On(ctx *cputil.Context, req *OnReq) (*OnResp, error) {
+	if resp, err := cputil.Execute[*OnReq, *OnResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

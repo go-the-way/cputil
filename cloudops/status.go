@@ -38,8 +38,8 @@ func (r *StatusReq) Form() (form url.Values)     { return }
 func (r *StatusReq) Body() any                   { return nil }
 
 // Status 获取实例状态
-func Status(ctx *cloudplatform.Context, req *StatusReq) (*StatusResp, error) {
-	if resp, err := cloudplatform.Execute[*StatusReq, *StatusResp](ctx, req); err != nil {
+func Status(ctx *cputil.Context, req *StatusReq) (*StatusResp, error) {
+	if resp, err := cputil.Execute[*StatusReq, *StatusResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

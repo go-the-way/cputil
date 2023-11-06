@@ -34,8 +34,8 @@ func (r *LockReq) Form() (form url.Values)     { return }
 func (r *LockReq) Body() any                   { return nil }
 
 // Lock 实例锁定
-func Lock(ctx *cloudplatform.Context, req *LockReq) (*LockResp, error) {
-	if resp, err := cloudplatform.Execute[*LockReq, *LockResp](ctx, req); err != nil {
+func Lock(ctx *cputil.Context, req *LockReq) (*LockResp, error) {
+	if resp, err := cputil.Execute[*LockReq, *LockResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

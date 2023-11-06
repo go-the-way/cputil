@@ -39,8 +39,8 @@ func (r *CreateReq) Form() (form url.Values)     { return }
 func (r *CreateReq) Body() any                   { return r }
 
 // Create 添加NAT转发
-func Create(ctx *cloudplatform.Context, req *CreateReq) (*CreateResp, error) {
-	if resp, err := cloudplatform.Execute[*CreateReq, *CreateResp](ctx, req); err != nil {
+func Create(ctx *cputil.Context, req *CreateReq) (*CreateResp, error) {
+	if resp, err := cputil.Execute[*CreateReq, *CreateResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

@@ -49,8 +49,8 @@ func (r *GetIpReq) Form() (form url.Values)     { return }
 func (r *GetIpReq) Body() any                   { return nil }
 
 // GetIp 获取实例IP
-func GetIp(ctx *cloudplatform.Context, req *GetIpReq) (*GetIpResp, error) {
-	if resp, err := cloudplatform.Execute[*GetIpReq, *GetIpResp](ctx, req); err != nil {
+func GetIp(ctx *cputil.Context, req *GetIpReq) (*GetIpResp, error) {
+	if resp, err := cputil.Execute[*GetIpReq, *GetIpResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

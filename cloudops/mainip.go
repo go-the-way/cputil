@@ -35,8 +35,8 @@ func (r *MainipReq) Form() (form url.Values)     { return }
 func (r *MainipReq) Body() any                   { return r }
 
 // Mainip 设置主IP
-func Mainip(ctx *cloudplatform.Context, req *MainipReq) (*MainipResp, error) {
-	if resp, err := cloudplatform.Execute[*MainipReq, *MainipResp](ctx, req); err != nil {
+func Mainip(ctx *cputil.Context, req *MainipReq) (*MainipResp, error) {
+	if resp, err := cputil.Execute[*MainipReq, *MainipResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

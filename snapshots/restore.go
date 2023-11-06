@@ -43,8 +43,8 @@ func (r *RestoreReq) Form() (form url.Values)     { return }
 func (r *RestoreReq) Body() any                   { return nil }
 
 // Restore 备份/快照还原
-func Restore(ctx *cloudplatform.Context, req *RestoreReq) (*RestoreResp, error) {
-	if resp, err := cloudplatform.Execute[*RestoreReq, *RestoreResp](ctx, req); err != nil {
+func Restore(ctx *cputil.Context, req *RestoreReq) (*RestoreResp, error) {
+	if resp, err := cputil.Execute[*RestoreReq, *RestoreResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

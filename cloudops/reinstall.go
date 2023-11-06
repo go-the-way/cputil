@@ -48,8 +48,8 @@ func (r *ReinstallReq) Form() (form url.Values)     { return }
 func (r *ReinstallReq) Body() any                   { return r }
 
 // Reinstall 重装
-func Reinstall(ctx *cloudplatform.Context, req *ReinstallReq) (*ReinstallResp, error) {
-	if resp, err := cloudplatform.Execute[*ReinstallReq, *ReinstallResp](ctx, req); err != nil {
+func Reinstall(ctx *cputil.Context, req *ReinstallReq) (*ReinstallResp, error) {
+	if resp, err := cputil.Execute[*ReinstallReq, *ReinstallResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

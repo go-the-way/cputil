@@ -35,8 +35,8 @@ func (r *UpdateReq) Form() (form url.Values)     { return }
 func (r *UpdateReq) Body() any                   { return r }
 
 // Update 修改vpc网络
-func Update(ctx *cloudplatform.Context, req *UpdateReq) (*UpdateResp, error) {
-	if resp, err := cloudplatform.Execute[*UpdateReq, *UpdateResp](ctx, req); err != nil {
+func Update(ctx *cputil.Context, req *UpdateReq) (*UpdateResp, error) {
+	if resp, err := cputil.Execute[*UpdateReq, *UpdateResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

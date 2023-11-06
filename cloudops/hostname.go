@@ -35,8 +35,8 @@ func (r *HostnameReq) Form() (form url.Values)     { return }
 func (r *HostnameReq) Body() any                   { return r }
 
 // Hostname 修改主机名
-func Hostname(ctx *cloudplatform.Context, req *HostnameReq) (*HostnameResp, error) {
-	if resp, err := cloudplatform.Execute[*HostnameReq, *HostnameResp](ctx, req); err != nil {
+func Hostname(ctx *cputil.Context, req *HostnameReq) (*HostnameResp, error) {
+	if resp, err := cputil.Execute[*HostnameReq, *HostnameResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

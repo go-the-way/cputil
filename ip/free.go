@@ -41,8 +41,8 @@ func (r *FreeReq) Values() (values url.Values) { values, _ = q.Values(r); return
 func (r *FreeReq) Form() (form url.Values)     { return }
 func (r *FreeReq) Body() any                   { return nil }
 
-func Free(ctx *cloudplatform.Context, req *FreeReq) ([]*FreeResp, error) {
-	if resp, err := cloudplatform.Execute[*FreeReq, []*FreeResp](ctx, req); err != nil {
+func Free(ctx *cputil.Context, req *FreeReq) ([]*FreeResp, error) {
+	if resp, err := cputil.Execute[*FreeReq, []*FreeResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

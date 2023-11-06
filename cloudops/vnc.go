@@ -42,8 +42,8 @@ func (r *VncReq) Form() (form url.Values)     { return }
 func (r *VncReq) Body() any                   { return nil }
 
 // Vnc VNC
-func Vnc(ctx *cloudplatform.Context, req *VncReq) (*VncResp, error) {
-	if resp, err := cloudplatform.Execute[*VncReq, *VncResp](ctx, req); err != nil {
+func Vnc(ctx *cputil.Context, req *VncReq) (*VncResp, error) {
+	if resp, err := cputil.Execute[*VncReq, *VncResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

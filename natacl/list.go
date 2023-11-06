@@ -57,8 +57,8 @@ func (r *ListReq) Form() (form url.Values)     { return }
 func (r *ListReq) Body() any                   { return nil }
 
 // List NAT转发列表
-func List(ctx *cloudplatform.Context, req *ListReq) (*ListResp, error) {
-	if resp, err := cloudplatform.Execute[*ListReq, *ListResp](ctx, req); err != nil {
+func List(ctx *cputil.Context, req *ListReq) (*ListResp, error) {
+	if resp, err := cputil.Execute[*ListReq, *ListResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

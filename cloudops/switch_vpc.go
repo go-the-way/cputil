@@ -37,8 +37,8 @@ func (r *SwitchVpcReq) Values() (values url.Values) { return }
 func (r *SwitchVpcReq) Form() (form url.Values)     { return }
 func (r *SwitchVpcReq) Body() any                   { return r }
 
-func SwitchVpc(ctx *cloudplatform.Context, req *SwitchVpcReq) (*SwitchVpcResp, error) {
-	if resp, err := cloudplatform.Execute[*SwitchVpcReq, *SwitchVpcResp](ctx, req); err != nil {
+func SwitchVpc(ctx *cputil.Context, req *SwitchVpcReq) (*SwitchVpcResp, error) {
+	if resp, err := cputil.Execute[*SwitchVpcReq, *SwitchVpcResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

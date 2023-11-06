@@ -34,8 +34,8 @@ func (r *UnlockReq) Form() (form url.Values)     { return }
 func (r *UnlockReq) Body() any                   { return nil }
 
 // Unlock 实例解除锁定
-func Unlock(ctx *cloudplatform.Context, req *UnlockReq) (*UnlockResp, error) {
-	if resp, err := cloudplatform.Execute[*UnlockReq, *UnlockResp](ctx, req); err != nil {
+func Unlock(ctx *cputil.Context, req *UnlockReq) (*UnlockResp, error) {
+	if resp, err := cputil.Execute[*UnlockReq, *UnlockResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

@@ -32,8 +32,8 @@ func (r *CancelReq) Form() (form url.Values)     { return }
 func (r *CancelReq) Body() any                   { return nil }
 
 // Cancel 取消任务
-func Cancel(ctx *cloudplatform.Context, req *CancelReq) (*CancelResp, error) {
-	if resp, err := cloudplatform.Execute[*CancelReq, *CancelResp](ctx, req); err != nil {
+func Cancel(ctx *cputil.Context, req *CancelReq) (*CancelResp, error) {
+	if resp, err := cputil.Execute[*CancelReq, *CancelResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

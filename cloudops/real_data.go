@@ -44,8 +44,8 @@ func (r *RealDataReq) Form() (form url.Values)     { return }
 func (r *RealDataReq) Body() any                   { return r }
 
 // RealData 获取实例实时CPU/内存
-func RealData(ctx *cloudplatform.Context, req *RealDataReq) (*RealDataResp, error) {
-	if resp, err := cloudplatform.Execute[*RealDataReq, *RealDataResp](ctx, req); err != nil {
+func RealData(ctx *cputil.Context, req *RealDataReq) (*RealDataResp, error) {
+	if resp, err := cputil.Execute[*RealDataReq, *RealDataResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

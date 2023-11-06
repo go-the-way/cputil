@@ -34,8 +34,8 @@ func (r *ResumeReq) Form() (form url.Values)     { return }
 func (r *ResumeReq) Body() any                   { return nil }
 
 // Resume 解除挂起
-func Resume(ctx *cloudplatform.Context, req *ResumeReq) (*ResumeResp, error) {
-	if resp, err := cloudplatform.Execute[*ResumeReq, *ResumeResp](ctx, req); err != nil {
+func Resume(ctx *cputil.Context, req *ResumeReq) (*ResumeResp, error) {
+	if resp, err := cputil.Execute[*ResumeReq, *ResumeResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

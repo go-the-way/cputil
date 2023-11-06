@@ -36,8 +36,8 @@ func (r *BandwidthReq) Form() (form url.Values)     { return }
 func (r *BandwidthReq) Body() any                   { return r }
 
 // Bandwidth 修改实例带宽
-func Bandwidth(ctx *cloudplatform.Context, req *BandwidthReq) (*BandwidthResp, error) {
-	if resp, err := cloudplatform.Execute[*BandwidthReq, *BandwidthResp](ctx, req); err != nil {
+func Bandwidth(ctx *cputil.Context, req *BandwidthReq) (*BandwidthResp, error) {
+	if resp, err := cputil.Execute[*BandwidthReq, *BandwidthResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

@@ -35,8 +35,8 @@ func (r *RescueEnterReq) Values() (values url.Values) { return }
 func (r *RescueEnterReq) Form() (form url.Values)     { return }
 func (r *RescueEnterReq) Body() any                   { return nil }
 
-func RescueEnter(ctx *cloudplatform.Context, req *RescueEnterReq) (*RescueEnterResp, error) {
-	if resp, err := cloudplatform.Execute[*RescueEnterReq, *RescueEnterResp](ctx, req); err != nil {
+func RescueEnter(ctx *cputil.Context, req *RescueEnterReq) (*RescueEnterResp, error) {
+	if resp, err := cputil.Execute[*RescueEnterReq, *RescueEnterResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)
@@ -59,8 +59,8 @@ func (r *RescueExitReq) Values() (values url.Values) { return }
 func (r *RescueExitReq) Form() (form url.Values)     { return }
 func (r *RescueExitReq) Body() any                   { return nil }
 
-func RescueExit(ctx *cloudplatform.Context, req *RescueExitReq) (*RescueExitResp, error) {
-	if resp, err := cloudplatform.Execute[*RescueExitReq, *RescueExitResp](ctx, req); err != nil {
+func RescueExit(ctx *cputil.Context, req *RescueExitReq) (*RescueExitResp, error) {
+	if resp, err := cputil.Execute[*RescueExitReq, *RescueExitResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

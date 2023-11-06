@@ -9,7 +9,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package cloudplatform
+package cputil
 
 import (
 	"bytes"
@@ -33,7 +33,7 @@ var (
 	cacheCtx       = map[string]*Context{}
 	cacheCtxID     = map[uint]*Context{}
 	refreshCh      = make(chan struct{}, 1)
-	logger         = log.New(os.Stdout, "[cloudplatform] ", log.LstdFlags)
+	logger         = log.New(os.Stdout, "[cp] ", log.LstdFlags)
 )
 
 func AddCtx(ctx ...*Context) {
@@ -195,6 +195,9 @@ func Execute[R Request, RR any](ctx *Context, request R) (resp Response[RR], err
 		return
 	}
 	readAll, err := io.ReadAll(rawResp.Body)
+	if os.Getenv("CP_DEBUG") == "T" {
+		fmt.Println(string(readAll))
+	}
 	resp.StatusCode = rawResp.StatusCode
 	switch resp.StatusCode {
 	case http.StatusOK,

@@ -34,8 +34,8 @@ func (r *DeleteReq) Form() (form url.Values)     { return }
 func (r *DeleteReq) Body() any                   { return nil }
 
 // Delete 删除vpc网络
-func Delete(ctx *cloudplatform.Context, req *DeleteReq) (*DeleteResp, error) {
-	if resp, err := cloudplatform.Execute[*DeleteReq, *DeleteResp](ctx, req); err != nil {
+func Delete(ctx *cputil.Context, req *DeleteReq) (*DeleteResp, error) {
+	if resp, err := cputil.Execute[*DeleteReq, *DeleteResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

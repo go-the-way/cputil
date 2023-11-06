@@ -36,8 +36,8 @@ func (r *PanelPassReq) Body() any                   { return r }
 
 // PanelPass 修改面板管理密码
 // 修改面板管理密码(v2.2.2+)
-func PanelPass(ctx *cloudplatform.Context, req *PanelPassReq) (*PanelPassResp, error) {
-	if resp, err := cloudplatform.Execute[*PanelPassReq, *PanelPassResp](ctx, req); err != nil {
+func PanelPass(ctx *cputil.Context, req *PanelPassReq) (*PanelPassResp, error) {
+	if resp, err := cputil.Execute[*PanelPassReq, *PanelPassResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

@@ -35,8 +35,8 @@ func (r *UnlinksReq) Form() (form url.Values)     { return }
 func (r *UnlinksReq) Body() any                   { return r }
 
 // Unlinks 解除关联安全组
-func Unlinks(ctx *cloudplatform.Context, req *UnlinksReq) (*UnlinksResp, error) {
-	if resp, err := cloudplatform.Execute[*UnlinksReq, *UnlinksResp](ctx, req); err != nil {
+func Unlinks(ctx *cputil.Context, req *UnlinksReq) (*UnlinksResp, error) {
+	if resp, err := cputil.Execute[*UnlinksReq, *UnlinksResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

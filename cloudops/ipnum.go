@@ -38,8 +38,8 @@ func (r *IpNumReq) Body() any                   { return r }
 
 // IpNum 修改实例IP数量
 // 修改实例IP数量,第一个网卡
-func IpNum(ctx *cloudplatform.Context, req *IpNumReq) (*IpNumResp, error) {
-	if resp, err := cloudplatform.Execute[*IpNumReq, *IpNumResp](ctx, req); err != nil {
+func IpNum(ctx *cputil.Context, req *IpNumReq) (*IpNumResp, error) {
+	if resp, err := cputil.Execute[*IpNumReq, *IpNumResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

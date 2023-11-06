@@ -36,8 +36,8 @@ func (r *HardRebootReq) Form() (form url.Values)     { return }
 func (r *HardRebootReq) Body() any                   { return nil }
 
 // HardReboot 硬重启
-func HardReboot(ctx *cloudplatform.Context, req *HardRebootReq) (*HardRebootResp, error) {
-	if resp, err := cloudplatform.Execute[*HardRebootReq, *HardRebootResp](ctx, req); err != nil {
+func HardReboot(ctx *cputil.Context, req *HardRebootReq) (*HardRebootResp, error) {
+	if resp, err := cputil.Execute[*HardRebootReq, *HardRebootResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

@@ -37,8 +37,8 @@ func (r *PasswordReq) Form() (form url.Values)     { return }
 func (r *PasswordReq) Body() any                   { return r }
 
 // Password 重置密码
-func Password(ctx *cloudplatform.Context, req *PasswordReq) (*PasswordResp, error) {
-	if resp, err := cloudplatform.Execute[*PasswordReq, *PasswordResp](ctx, req); err != nil {
+func Password(ctx *cputil.Context, req *PasswordReq) (*PasswordResp, error) {
+	if resp, err := cputil.Execute[*PasswordReq, *PasswordResp](ctx, req); err != nil {
 		return nil, err
 	} else if e := resp.Error; e != "" {
 		return nil, errors.New(e)

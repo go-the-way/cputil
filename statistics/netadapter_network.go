@@ -27,7 +27,7 @@ type (
 	}
 	NetAdapterNetworkResp struct {
 		List []NetAdapterRespList `json:"list"` // 流量列表
-		Stat NetDetailResp        // 汇总数据
+		Stat NetDetailResp        `json:"stat"` // 汇总数据
 	}
 )
 

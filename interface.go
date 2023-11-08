@@ -33,7 +33,7 @@ var (
 	cacheCtx       = map[string]*Context{}
 	cacheCtxID     = map[uint]*Context{}
 	refreshCh      = make(chan struct{}, 1)
-	logger         = log.New(os.Stdout, "[cp] ", log.LstdFlags)
+	logger         = log.New(os.Stdout, "[cputil] ", log.LstdFlags)
 )
 
 func AddCtx(ctx ...*Context) {

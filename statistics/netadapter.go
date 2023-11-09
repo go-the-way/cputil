@@ -16,6 +16,7 @@ import (
 	"fmt"
 	"github.com/rwscode/cputil"
 	"github.com/rwscode/cputil/clouds"
+	"github.com/rwscode/cputil/pkg/timefmt"
 )
 
 type (
@@ -29,9 +30,9 @@ type (
 		EndTime       int64  // 结束毫秒时间戳(1699344060000) UTC+8
 	}
 	NetAdapterRespList struct {
-		UtcTime string  `json:"utc_time"` // UTC time(2023-11-07T00:48:00Z)
-		In      float64 `json:"in"`       // 进带宽(bps)
-		Out     float64 `json:"out"`      // 出带宽(bps)
+		Time string  `json:"time"` // 时间
+		In   float64 `json:"in"`   // 进带宽(bps)
+		Out  float64 `json:"out"`  // 出带宽(bps)
 	}
 	NetAdapterResp struct {
 		List []NetAdapterRespList `json:"list"`
@@ -79,7 +80,7 @@ func NetAdapter(ctx *cputil.Context, req *NetAdapterReq) (*NetAdapterResp, error
 			if aaa != nil && len(aaa) >= 3 {
 				var resp NetAdapterRespList
 				if utcTime := aaa[0]; utcTime != nil {
-					resp.UtcTime = utcTime.(string)
+					resp.Time = timefmt.Utc2Gmt8(utcTime.(string))
 				}
 				if in := aaa[1]; in != nil {
 					resp.In = in.(float64)

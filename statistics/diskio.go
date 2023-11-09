@@ -15,20 +15,21 @@ import (
 	"errors"
 	"github.com/rwscode/cputil"
 	"github.com/rwscode/cputil/clouds"
+	"github.com/rwscode/cputil/pkg/timefmt"
 )
 
 type (
 	// DiskIoReq 硬盘IO
 	DiskIoReq struct {
 		Id        uint   // cloud id
-		DevName   string // vda vdd
+		Dev       string // vda vdd
 		StartTime int64  // 开始毫秒时间戳(1699344000000) UTC+8
 		EndTime   int64  // 结束毫秒时间戳(1699344060000) UTC+8
 	}
 	DiskIoRespList struct {
-		UtcTime   string  `json:"utc_time"`   // UTC time(2023-11-07T00:48:00Z)
-		Read      float64 `json:"read"`       // 读取速度(Bytes)
-		Write     float64 `json:"write"`      // 写入速度(Bytes)
+		Time      string  `json:"time"`       // 时间
+		Read      float64 `json:"read"`       // 读取速度(Byte)
+		Write     float64 `json:"write"`      // 写入速度(Byte)
 		ReadIops  float64 `json:"read_iops"`  // 读取IOPS
 		WriteIops float64 `json:"write_iops"` // 写入IOPS
 	}
@@ -59,7 +60,7 @@ func DiskIo(ctx *cputil.Context, req *DiskIoReq) (*DiskIoResp, error) {
 	if kvmId == "" {
 		return nil, errors.New("kvm id为空，查询失败")
 	}
-	arr, err := Statistics(ctx, &Req{Kvm: kvmId, Type: "disk_io", DevName: req.DevName, StartTime: req.StartTime, EndTime: req.EndTime})
+	arr, err := Statistics(ctx, &Req{Kvm: kvmId, Type: "disk_io", Dev: req.Dev, StartTime: req.StartTime, EndTime: req.EndTime})
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +75,7 @@ func DiskIo(ctx *cputil.Context, req *DiskIoReq) (*DiskIoResp, error) {
 			if aaa != nil && len(aaa) >= 5 {
 				var resp DiskIoRespList
 				if utcTime := aaa[0]; utcTime != nil {
-					resp.UtcTime = utcTime.(string)
+					resp.Time = timefmt.Utc2Gmt8(utcTime.(string))
 				}
 				if read := aaa[1]; read != nil {
 					resp.Read = read.(float64)

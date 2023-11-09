@@ -28,7 +28,7 @@ type (
 		StartTime int64  `url:"st,omitempty"`   // 开始毫秒时间戳(1699344000000) UTC+8
 		EndTime   int64  `url:"et,omitempty"`   // 结束毫秒时间戳(1699344060000) UTC+8
 
-		DevName   string `url:"dev_name,omitempty"`   // for disk io
+		Dev       string `url:"dev,omitempty"`        // for disk io
 		KvmIfName string `url:"kvm_ifname,omitempty"` // for net adapter
 		Status    string `url:"status,omitempty"`     // for net adapter
 	}

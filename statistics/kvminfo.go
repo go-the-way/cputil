@@ -15,6 +15,7 @@ import (
 	"errors"
 	"github.com/rwscode/cputil"
 	"github.com/rwscode/cputil/clouds"
+	"github.com/rwscode/cputil/pkg/timefmt"
 )
 
 type (
@@ -25,10 +26,10 @@ type (
 		EndTime   int64 // 结束毫秒时间戳(1699344060000) UTC+8
 	}
 	KvmInfoRespList struct {
-		UtcTime  string  `json:"utc_time"`  // UTC time(2023-11-07T00:48:00Z)
+		Time     string  `json:"time"`      // 时间
 		CPU      float64 `json:"cpu"`       // CPU使用率(n.xy)
-		MemTotal int64   `json:"mem_total"` // 总内存(Bytes)
-		MemUsed  int64   `json:"mem_used"`  // 已使用内存(Bytes)
+		MemTotal int64   `json:"mem_total"` // 总内存(Byte)
+		MemUsed  int64   `json:"mem_used"`  // 已使用内存(Byte)
 	}
 	KvmInfoResp struct {
 		List []KvmInfoRespList `json:"list"`
@@ -43,8 +44,8 @@ response
 	[
 		"2023-11-07T00:48:00Z", // utc time
  		7.790737, // CPU usage (%)
-		1900793856, // total mem in bytes
-		404992000  // used mem in bytes
+		1900793856, // total mem in Byte
+		404992000  // used mem in Byte
 	]
 ]
 */
@@ -66,21 +67,21 @@ func KvmInfo(ctx *cputil.Context, req *KvmInfoReq) (*KvmInfoResp, error) {
 		for _, aaa := range arr {
 			// "2023-11-07T00:48:00Z", // utc time
 			// 7.790737, // CPU usage (%)
-			// 1900793856, // total mem in bytes
-			// 404992000  // used mem in bytes
+			// 1900793856, // total mem in Byte
+			// 404992000  // used mem in Byte
 			var resp KvmInfoRespList
 			if aaa != nil && len(aaa) >= 4 {
 				if utcTime := aaa[0]; utcTime != nil {
-					resp.UtcTime = utcTime.(string)
+					resp.Time = timefmt.Utc2Gmt8(utcTime.(string))
 				}
 				if cpu := aaa[1]; cpu != nil {
 					resp.CPU = cpu.(float64)
 				}
 				if memTotal := aaa[2]; memTotal != nil {
-					resp.MemTotal = memTotal.(int64)
+					resp.MemTotal = int64(memTotal.(float64))
 				}
 				if memUsed := aaa[3]; memUsed != nil {
-					resp.MemUsed = memUsed.(int64)
+					resp.MemUsed = int64(memUsed.(float64))
 				}
 				list = append(list, resp)
 			}

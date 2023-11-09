@@ -15,6 +15,7 @@ import (
 	"errors"
 	q "github.com/google/go-querystring/query"
 	"github.com/rwscode/cputil"
+	"github.com/rwscode/cputil/pkg/timefmt"
 	"net/http"
 	"net/url"
 )
@@ -27,9 +28,9 @@ type (
 		KvmIfName string `url:"kvm_ifname,omitempty"` // $kvmid.$NetworkOffset
 	}
 	NetTotalResp struct {
-		UtcTime string `json:"utc_time"` // utc time
-		Accept  int64  `json:"accept"`   // 接收流量(Byte)
-		Send    int64  `json:"send"`     // 发送流量(Byte)
+		Time   string `json:"time"`   // 时间
+		Accept int64  `json:"accept"` // 接收流量(Byte)
+		Send   int64  `json:"send"`   // 发送流量(Byte)
 	}
 )
 
@@ -62,7 +63,7 @@ func NetTotal(ctx *cputil.Context, req *NetTotalReq) (*NetTotalResp, error) {
 	)
 	if totals != nil && len(totals) >= 3 {
 		if n := totals[0]; n != nil {
-			utcTime = n.(string)
+			utcTime = timefmt.Utc2Gmt8(n.(string))
 		}
 		if n := totals[1]; n != nil {
 			accept = int64(n.(float64))

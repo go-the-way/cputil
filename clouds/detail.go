@@ -186,32 +186,35 @@ type (
 		SkipColdBackup         int                 `json:"skip_cold_backup"`
 		SnapNum                int                 `json:"snap_num"`
 		SnapUsed               int                 `json:"snap_used"`
-		SshKey                 []interface{}       `json:"ssh_key"`
-		Status                 string              `json:"status"`
-		SupportNat             int                 `json:"support_nat"`
-		SuspendType            string              `json:"suspend_type"`
-		Svg                    int                 `json:"svg"`
-		System                 int                 `json:"system"`
-		TmpTraffic             int                 `json:"tmp_traffic"`
-		TrafficQuota           int                 `json:"traffic_quota"`
-		TrafficStartTime       string              `json:"traffic_start_time"`
-		Trunk                  int                 `json:"trunk"`
-		Type                   string              `json:"type"`
-		Uid                    int                 `json:"uid"`
-		UserId                 int                 `json:"user_id"`
-		Username               string              `json:"username"`
-		Uuid                   string              `json:"uuid"`
-		Video                  int                 `json:"video"`
-		Video2D                int                 `json:"video2d"`
-		Video3D                int                 `json:"video3d"`
-		Vlan                   interface{}         `json:"vlan"`
-		Vnc                    int                 `json:"vnc"`
-		Vncpass                string              `json:"vncpass"`
-		Vncport                int                 `json:"vncport"`
-		VpcMac                 string              `json:"vpc_mac"`
-		VpcName                string              `json:"vpc_name"`
-		Vram                   int                 `json:"vram"`
-		WaitRebootReason       string              `json:"wait_reboot_reason"`
+		SshKey                 struct {
+			Id   uint   `json:"id"`   // SSH密钥ID
+			Name string `json:"name"` // SSH密钥名称
+		} `json:"ssh_key"`
+		Status           string      `json:"status"`
+		SupportNat       int         `json:"support_nat"`
+		SuspendType      string      `json:"suspend_type"`
+		Svg              int         `json:"svg"`
+		System           int         `json:"system"`
+		TmpTraffic       int         `json:"tmp_traffic"`
+		TrafficQuota     int         `json:"traffic_quota"`
+		TrafficStartTime string      `json:"traffic_start_time"`
+		Trunk            int         `json:"trunk"`
+		Type             string      `json:"type"`
+		Uid              int         `json:"uid"`
+		UserId           int         `json:"user_id"`
+		Username         string      `json:"username"`
+		Uuid             string      `json:"uuid"`
+		Video            int         `json:"video"`
+		Video2D          int         `json:"video2d"`
+		Video3D          int         `json:"video3d"`
+		Vlan             interface{} `json:"vlan"`
+		Vnc              int         `json:"vnc"`
+		Vncpass          string      `json:"vncpass"`
+		Vncport          int         `json:"vncport"`
+		VpcMac           string      `json:"vpc_mac"`
+		VpcName          string      `json:"vpc_name"`
+		Vram             int         `json:"vram"`
+		WaitRebootReason string      `json:"wait_reboot_reason"`
 	}
 )
 

@@ -62,13 +62,15 @@ type (
 		Niccard    int    `json:"niccard"`
 		InsideVlan string `json:"inside_vlan"`
 		Ipaddress  []struct {
-			Id         int    `json:"id"`
-			Ipaddress  string `json:"ipaddress"`
-			Bwid       int    `json:"bwid"`
-			Remark     string `json:"remark"`
-			Interface  int    `json:"interface"`
-			Gateway    string `json:"gateway"`
-			SubnetMask string `json:"subnet_mask"`
+			Id          int    `json:"id"`
+			Ipaddress   string `json:"ipaddress"`
+			Bwid        int    `json:"bwid"`
+			Remark      string `json:"remark"`
+			Interface   int    `json:"interface"`
+			Gateway     string `json:"gateway"`
+			SubnetMask  string `json:"subnet_mask"`
+			IpSegmentId int    `json:"ip_segment_id"`
+			IpName      string `json:"ip_name"`
 		} `json:"ipaddress"`
 		NetId         int    `json:"net_id"`
 		Vpc           int    `json:"vpc"`
@@ -131,64 +133,71 @@ type (
 				Remark     string `json:"remark"`
 			} `json:"ip"`
 		} `json:"default_bw_group"`
-		Disk          []DetailRespDisk `json:"disk"`
-		DynamicMemory int              `json:"dynamic_memory"`
-		Gpu           int              `json:"gpu"`
-		Hostname      string           `json:"hostname"`
-		Id            int              `json:"id"`
-		ImageGroupId  int              `json:"image_group_id"`
-		Internet      int              `json:"internet"`
-		Ip            []struct {
-			Id        uint   `json:"id"`
-			Ipaddress string `json:"ipaddress"`
-			Remark    string `json:"remark"`
-			Interface int    `json:"interface"`
+		DefaultQemuVersionShow string           `json:"default_qemu_version_show"`
+		Disk                   []DetailRespDisk `json:"disk"`
+		DynamicMemory          int              `json:"dynamic_memory"`
+		Gpu                    int              `json:"gpu"`
+		Hostname               string           `json:"hostname"`
+		Id                     int              `json:"id"`
+		ImageGroupId           int              `json:"image_group_id"`
+		Internet               int              `json:"internet"`
+		Ip                     []struct {
+			Id          int    `json:"id"`
+			Ipaddress   string `json:"ipaddress"`
+			Remark      string `json:"remark"`
+			Interface   int    `json:"interface"`
+			IpSegmentId int    `json:"ip_segment_id"`
+			IpName      string `json:"ip_name"`
 		} `json:"ip"`
-		IpNum                  int                 `json:"ip_num"`
-		IsNatHost              bool                `json:"is_nat_host"`
-		Iso                    []interface{}       `json:"iso"`
-		Kvmid                  string              `json:"kvmid"`
-		LinkClone              int                 `json:"link_clone"`
-		LinkFile               string              `json:"link_file"`
-		LinkId                 int                 `json:"link_id"`
-		LinkType               string              `json:"link_type"`
-		Lock                   int                 `json:"lock"`
-		Mainip                 string              `json:"mainip"`
-		Memory                 float64             `json:"memory"`
-		NatAclLimit            int                 `json:"nat_acl_limit"`
-		NatAclUsed             int                 `json:"nat_acl_used"`
-		NatWebLimit            int                 `json:"nat_web_limit"`
-		NatWebUsed             int                 `json:"nat_web_used"`
-		Network                []DetailRespNetwork `json:"network"`
-		NetworkType            string              `json:"network_type"`
-		NodeId                 int                 `json:"node_id"`
-		NodeName               string              `json:"node_name"`
-		NodeVlanRange          string              `json:"node_vlan_range"`
-		OperateSystem          string              `json:"operate_system"`
-		OsName                 string              `json:"os_name"`
-		Osuser                 string              `json:"osuser"`
-		Pae                    int                 `json:"pae"`
-		PanelPass              string              `json:"panel_pass"`
-		ParentName             interface{}         `json:"parent_name"`
-		Port                   int                 `json:"port"`
-		Queues                 int                 `json:"queues"`
-		Remark                 string              `json:"remark"`
-		Rescue                 int                 `json:"rescue"`
-		RescueSystem           int                 `json:"rescue_system"`
-		ResetFlowDay           int                 `json:"reset_flow_day"`
-		ResourcePackage        []interface{}       `json:"resource_package"`
-		Rid                    int                 `json:"rid"`
-		Rootpassword           string              `json:"rootpassword"`
-		Security               int                 `json:"security"`
-		SecurityName           string              `json:"security_name"`
-		SecurityRandPortDelete bool                `json:"security_rand_port_delete"`
-		SingleIpNat            int                 `json:"single_ip_nat"`
-		SkipColdBackup         int                 `json:"skip_cold_backup"`
-		SnapNum                int                 `json:"snap_num"`
-		SnapUsed               int                 `json:"snap_used"`
-		SshKey                 struct {
-			Id   uint   `json:"id"`   // SSH密钥ID
-			Name string `json:"name"` // SSH密钥名称
+		IpNum                   int                 `json:"ip_num"`
+		Ipv6                    []interface{}       `json:"ipv6"`
+		Ipv6Num                 int                 `json:"ipv6_num"`
+		IsNatHost               bool                `json:"is_nat_host"`
+		Iso                     []interface{}       `json:"iso"`
+		Kvmid                   string              `json:"kvmid"`
+		LinkClone               int                 `json:"link_clone"`
+		LinkFile                string              `json:"link_file"`
+		LinkId                  int                 `json:"link_id"`
+		LinkType                string              `json:"link_type"`
+		Lock                    int                 `json:"lock"`
+		Mainip                  string              `json:"mainip"`
+		Memory                  int                 `json:"memory"`
+		NatAclLimit             int                 `json:"nat_acl_limit"`
+		NatAclUsed              int                 `json:"nat_acl_used"`
+		NatWebLimit             int                 `json:"nat_web_limit"`
+		NatWebUsed              int                 `json:"nat_web_used"`
+		Network                 []DetailRespNetwork `json:"network"`
+		NetworkType             string              `json:"network_type"`
+		NodeId                  int                 `json:"node_id"`
+		NodeName                string              `json:"node_name"`
+		NodeVlanRange           string              `json:"node_vlan_range"`
+		OperateSystem           string              `json:"operate_system"`
+		OsName                  string              `json:"os_name"`
+		Osuser                  string              `json:"osuser"`
+		OverFlowLimitBw         int                 `json:"over_flow_limit_bw"`
+		Pae                     int                 `json:"pae"`
+		PanelPass               string              `json:"panel_pass"`
+		ParentName              interface{}         `json:"parent_name"`
+		Port                    int                 `json:"port"`
+		Qemu                    string              `json:"qemu"`
+		QemuVersion             []interface{}       `json:"qemu_version"`
+		Queues                  int                 `json:"queues"`
+		Remark                  string              `json:"remark"`
+		Rescue                  int                 `json:"rescue"`
+		RescueSystem            int                 `json:"rescue_system"`
+		ResetFlowDay            int                 `json:"reset_flow_day"`
+		ResourcePackage         []interface{}       `json:"resource_package"`
+		Rid                     int                 `json:"rid"`
+		Rootpassword            string              `json:"rootpassword"`
+		Security                int                 `json:"security"`
+		SecurityName            string              `json:"security_name"`
+		SecurityRandPortDelete  bool                `json:"security_rand_port_delete"`
+		SimulatePhysicalMachine int                 `json:"simulate_physical_machine"`
+		SingleIpNat             int                 `json:"single_ip_nat"`
+		SkipColdBackup          int                 `json:"skip_cold_backup"`
+		SnapNum                 int                 `json:"snap_num"`
+		SnapUsed                int                 `json:"snap_used"`
+		SshKey                  struct {
 		} `json:"ssh_key"`
 		Status           string      `json:"status"`
 		SupportNat       int         `json:"support_nat"`
@@ -198,6 +207,7 @@ type (
 		TmpTraffic       int         `json:"tmp_traffic"`
 		TrafficQuota     int         `json:"traffic_quota"`
 		TrafficStartTime string      `json:"traffic_start_time"`
+		Transparent      int         `json:"transparent"`
 		Trunk            int         `json:"trunk"`
 		Type             string      `json:"type"`
 		Uid              int         `json:"uid"`
@@ -211,7 +221,6 @@ type (
 		Vnc              int         `json:"vnc"`
 		Vncpass          string      `json:"vncpass"`
 		Vncport          int         `json:"vncport"`
-		VpcMac           string      `json:"vpc_mac"`
 		VpcName          string      `json:"vpc_name"`
 		Vram             int         `json:"vram"`
 		WaitRebootReason string      `json:"wait_reboot_reason"`

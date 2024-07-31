@@ -13,7 +13,7 @@ package clouds
 
 import (
 	"errors"
-	"github.com/rwscode/cputil"
+	"github.com/go-the-way/cputil"
 	"net/http"
 	"net/url"
 )

@@ -1,4 +1,4 @@
-module github.com/rwscode/cputil
+module github.com/go-the-way/cputil
 
 go 1.18
 

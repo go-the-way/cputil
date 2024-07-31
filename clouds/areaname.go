@@ -12,7 +12,7 @@
 package clouds
 
 import (
-	"github.com/rwscode/cputil"
+	"github.com/go-the-way/cputil"
 )
 
 // AreaName 区域名称

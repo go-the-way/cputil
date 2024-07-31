@@ -13,8 +13,8 @@ package statistics
 
 import (
 	"fmt"
-	"github.com/rwscode/cputil"
-	"github.com/rwscode/cputil/clouds"
+	"github.com/go-the-way/cputil"
+	"github.com/go-the-way/cputil/clouds"
 )
 
 type (

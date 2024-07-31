@@ -11,7 +11,7 @@
 
 package clouds
 
-import "github.com/rwscode/cputil"
+import "github.com/go-the-way/cputil"
 
 // Disks 磁盘列表
 func Disks(ctx *cputil.Context, cloudId uint) ([]DetailRespDisk, error) {

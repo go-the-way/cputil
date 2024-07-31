@@ -11,7 +11,7 @@
 
 package clouds
 
-import "github.com/rwscode/cputil"
+import "github.com/go-the-way/cputil"
 
 // Networks 网卡列表
 func Networks(ctx *cputil.Context, cloudId uint) ([]DetailRespNetwork, error) {

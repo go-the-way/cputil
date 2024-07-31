@@ -14,9 +14,9 @@ package statistics
 import (
 	"errors"
 	"fmt"
-	"github.com/rwscode/cputil"
-	"github.com/rwscode/cputil/clouds"
-	"github.com/rwscode/cputil/pkg/timefmt"
+	"github.com/go-the-way/cputil"
+	"github.com/go-the-way/cputil/clouds"
+	"github.com/go-the-way/cputil/pkg/timefmt"
 )
 
 type (

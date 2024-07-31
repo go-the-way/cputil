@@ -13,9 +13,9 @@ package statistics
 
 import (
 	"errors"
+	"github.com/go-the-way/cputil"
+	"github.com/go-the-way/cputil/pkg/timefmt"
 	q "github.com/google/go-querystring/query"
-	"github.com/rwscode/cputil"
-	"github.com/rwscode/cputil/pkg/timefmt"
 	"net/http"
 	"net/url"
 )

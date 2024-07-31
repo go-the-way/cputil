@@ -11,7 +11,7 @@
 
 package clouds
 
-import "github.com/rwscode/cputil"
+import "github.com/go-the-way/cputil"
 
 // NodeId 节点id
 func NodeId(ctx *cputil.Context, cloudId uint) (int, error) {

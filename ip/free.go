@@ -13,8 +13,8 @@ package ip
 
 import (
 	"errors"
+	"github.com/go-the-way/cputil"
 	q "github.com/google/go-querystring/query"
-	"github.com/rwscode/cputil"
 	"net/http"
 	"net/url"
 )

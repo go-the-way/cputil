@@ -115,10 +115,18 @@ func refreshToken() {
 	return
 }
 
+var httpClient = &http.Client{
+	Timeout: time.Minute * 2,
+	Transport: &http.Transport{
+		TLSClientConfig: &tls.Config{
+			InsecureSkipVerify: true,
+		},
+	},
+}
+
 func (ctx *Context) refreshToken() {
-	http.DefaultClient.Timeout = time.Second * 10
 	logger.Println("start refresh token")
-	if resp, err := http.Post(ctx.BaseUrl+"/v1/login", "application/json", bytes.NewBufferString(fmt.Sprintf("{\"username\":\"%s\",\"password\":\"%s\"}", ctx.Username, ctx.Password))); err != nil {
+	if resp, err := httpClient.Post(ctx.BaseUrl+"/v1/login", "application/json", bytes.NewBufferString(fmt.Sprintf("{\"username\":\"%s\",\"password\":\"%s\"}", ctx.Username, ctx.Password))); err != nil {
 		logger.Println("get token err:", err)
 	} else if resp.StatusCode != http.StatusCreated {
 		logger.Println("get token not 201")

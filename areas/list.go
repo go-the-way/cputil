@@ -33,7 +33,7 @@ type (
 	}
 	ListResp struct {
 		Data []struct {
-			Id           int    `json:"id"`   // 区域ID
+			Id           uint   `json:"id"`   // 区域ID
 			Name         string `json:"name"` // 区域名
 			ShortName    string `json:"short_name"`
 			Ip           string `json:"ip"`

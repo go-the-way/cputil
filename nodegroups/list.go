@@ -9,7 +9,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package nodes
+package nodegroups
 
 import (
 	"errors"
@@ -37,38 +37,14 @@ type (
 	}
 	ListResp struct {
 		Data []struct {
-			Id              uint        `json:"id"`
-			Name            string      `json:"name"`
-			Ip              string      `json:"ip"`
-			AreaId          int         `json:"area_id"`
-			Status          int         `json:"status"`
-			Port            int         `json:"port"`
-			SshPass         string      `json:"ssh_pass"`
-			Username        string      `json:"username"`
-			Password        string      `json:"password"`
-			Dns1            string      `json:"dns1"`
-			Dns2            string      `json:"dns2"`
-			NatStatus       int         `json:"nat_status"`
-			UpdateFailedMsg string      `json:"update_failed_msg"`
-			UpgradeStatus   int         `json:"upgrade_status"`
-			UpgradeTime     string      `json:"upgrade_time"`
-			Enable          int         `json:"enable"`
-			AutoBootHost    int         `json:"auto_boot_host"`
-			LastLiveTime    string      `json:"last_live_time"`
-			GroupId         int         `json:"group_id"`
-			SingleIpNat     int         `json:"single_ip_nat"`
-			ChooseStoreRule int         `json:"choose_store_rule"`
-			Evacuate        int         `json:"evacuate"`
-			NatPortRange    string      `json:"nat_port_range"`
-			MaxMemory       int         `json:"max_memory"`
-			Type            string      `json:"type"`
-			Trunk           int         `json:"trunk"`
-			Remark          string      `json:"remark"`
-			AreaName        string      `json:"area_name"`
-			CloudNum        int         `json:"cloud_num"`
-			GroupName       interface{} `json:"group_name"`
-			Removable       bool        `json:"removable"`
-			Alive           bool        `json:"alive"`
+			Id          uint   `json:"id"`
+			Name        string `json:"name"`
+			Description string `json:"description"`
+			CreateTime  string `json:"create_time"`
+			Node        []struct {
+				Id   int    `json:"id"`
+				Name string `json:"name"`
+			} `json:"node"`
 		} `json:"data"`
 		Meta struct {
 			Total     int `json:"total"`
@@ -79,7 +55,7 @@ type (
 	}
 )
 
-func (r *ListReq) Url() string                 { return "/v1/nodes" }
+func (r *ListReq) Url() string                 { return "/v1/node_groups" }
 func (r *ListReq) Method() string              { return http.MethodGet }
 func (r *ListReq) Header() http.Header         { return nil }
 func (r *ListReq) Values() (values url.Values) { values, _ = q.Values(r); return }

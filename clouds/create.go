@@ -30,6 +30,7 @@ type (
 		IpGroup           uint   `json:"ip_group"`            // IP分组ID
 		Node              uint   `json:"node"`                // 节点ID
 		Area              uint   `json:"area"`                // 区域ID
+		NodeGroup         uint   `json:"node_group"`          // 节点分组ID
 		Store             uint   `json:"store"`               // 存储ID
 		Client            uint   `json:"client"`              // 用户ID
 		SystemDiskSize    uint   `json:"system_disk_size"`    // 系统盘大小

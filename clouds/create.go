@@ -27,6 +27,7 @@ type (
 		OutBw             uint   `json:"out_bw"`              // 出带宽(可选)
 		IpNum             uint   `json:"ip_num"`              // IP数量 和IP地址必须传其中一个
 		Ipaddress         []uint `json:"ipaddress"`           // IP地址ID 和IP数量必须传其中一个,节点通过IP地址分配,创建数量强制为1
+		IpGroup           uint   `json:"ip_group"`            // IP分组ID
 		Node              uint   `json:"node"`                // 节点ID
 		Area              uint   `json:"area"`                // 区域ID
 		Store             uint   `json:"store"`               // 存储ID

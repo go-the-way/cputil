@@ -116,7 +116,7 @@ func refreshToken() {
 }
 
 var httpClient = &http.Client{
-	Timeout: time.Minute * 2,
+	Timeout: time.Second * 3,
 	Transport: &http.Transport{
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: true,
